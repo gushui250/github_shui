@@ -1,0 +1,123 @@
+INFO     root:logger.py:50 You had select Chrome browser.
+INFO     root:logger.py:50 The test server url is: https://www.nhtest.com/
+INFO     root:logger.py:50 Starting Chrome browser.
+INFO     root:logger.py:50 Open url: https://www.nhtest.com/
+INFO     root:logger.py:50 Maximize the current window.
+INFO     root:logger.py:50 Set implicitly wait 10 seconds.
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had find the element //*[@id="details-button"] successful 
+INFO     root:logger.py:50 The element xpath=>//*[@id="details-button"] was clicked.
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had find the element //*[@id="proceed-link"] successful 
+INFO     root:logger.py:50 The element xpath=>//*[@id="proceed-link"] was clicked.
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had find the element //*[@id="modal-toRegister"]/div[2]/div[1] successful 
+INFO     root:logger.py:50 The element xpath=>//*[@id="modal-toRegister"]/div[2]/div[1] was clicked.
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had find the element //*[@id="g-head"]/div/p/a
+ successful 
+INFO     root:logger.py:50 The element xpath=>//*[@id="g-head"]/div/p/a
+ was clicked.
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots
+INFO     root:logger.py:50 Had take screenshot and save to folder : \screenshots

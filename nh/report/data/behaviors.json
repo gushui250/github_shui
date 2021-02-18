@@ -1,0 +1,26 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "name" : "behaviors",
+  "children" : [ {
+    "name" : "项目名称: 旎浩",
+    "children" : [ {
+      "name" : "登录模块",
+      "children" : [ {
+        "name" : "test01[params0]",
+        "uid" : "be42a45528ee8e78",
+        "parentUid" : "b4cb405a623105d4bd8f6a5d30608b63",
+        "status" : "broken",
+        "time" : {
+          "start" : 1612421300815,
+          "stop" : 1612421605347,
+          "duration" : 304532
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "[{'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}]" ]
+      } ],
+      "uid" : "b4cb405a623105d4bd8f6a5d30608b63"
+    } ],
+    "uid" : "8f64d0421c88251fcd6c206f88fdbb91"
+  } ]
+}

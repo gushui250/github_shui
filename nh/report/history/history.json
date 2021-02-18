@@ -1,0 +1,22 @@
+{
+  "e45bb6e2f90731b6e79db1fedb87cf82" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 1,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "be42a45528ee8e78",
+      "status" : "broken",
+      "statusDetails" : "selenium.common.exceptions.JavascriptException: Message: javascript error: Failed to execute 'elementsFromPoint' on 'Document': The provided double value is non-finite.\n  (Session info: chrome=88.0.4324.104)",
+      "time" : {
+        "start" : 1612421300815,
+        "stop" : 1612421605347,
+        "duration" : 304532
+      }
+    } ]
+  }
+}

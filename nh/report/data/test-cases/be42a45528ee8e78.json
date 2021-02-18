@@ -1,0 +1,841 @@
+{
+  "uid" : "be42a45528ee8e78",
+  "name" : "test01[params0]",
+  "fullName" : "testcase.test_case01.Test_BaiduSearch#test01",
+  "historyId" : "e45bb6e2f90731b6e79db1fedb87cf82",
+  "time" : {
+    "start" : 1612421300815,
+    "stop" : 1612421605347,
+    "duration" : 304532
+  },
+  "description" : "\n        登录case用例\n        :param params:\n        :return:\n        ",
+  "descriptionHtml" : "<pre><code>    登录case用例\n    :param params:\n    :return:\n</code></pre>\n",
+  "status" : "broken",
+  "statusMessage" : "selenium.common.exceptions.JavascriptException: Message: javascript error: Failed to execute 'elementsFromPoint' on 'Document': The provided double value is non-finite.\n  (Session info: chrome=88.0.4324.104)",
+  "statusTrace" : "self = <testcase.test_case01.Test_BaiduSearch object at 0x00000266F684E0B8>\nparams = [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\...p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]\n\n    @pytest.mark.parametrize('params',list(Data_().data03(3)))\n    def test01(self,params):\n        '''\n        登录case用例\n        :param params:\n        :return:\n        '''\n        self.test = BasePage(self.driver)\n        params=params[0]['tital']\n        print(params)\n        # input('>>>')\n        for i in params:\n            if i!=None:\n                with allure.step(i[0]):\n                    func=getattr(self.test,i[1])\n                    cases = [i for i in list(i[2:]) if i != '' and i !='\\n']\n                    print(cases)\n>                   func(*cases)\n\ntest_case01.py:198: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n..\\framework\\base_page.py:216: in move_to_elements\n    ActionChains(self.driver).move_to_element(i).perform()\nE:\\Python\\Python37\\lib\\site-packages\\selenium\\webdriver\\common\\action_chains.py:80: in perform\n    self.w3c_actions.perform()\nE:\\Python\\Python37\\lib\\site-packages\\selenium\\webdriver\\common\\actions\\action_builder.py:76: in perform\n    self.driver.execute(Command.W3C_ACTIONS, enc)\nE:\\Python\\Python37\\lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py:321: in execute\n    self.error_handler.check_response(response)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x00000266F63F0DD8>\nresponse = {'status': 500, 'value': '{\"value\":{\"error\":\"javascript error\",\"message\":\"javascript error: Failed to execute \\'elemen...\\n\\\\tRtlGetAppContainerNamedObjectPath [0x77E28944+228]\\\\n\\\\tRtlGetAppContainerNamedObjectPath [0x77E28914+180]\\\\n\"}}'}\n\n    def check_response(self, response):\n        \"\"\"\n        Checks that a JSON response from the WebDriver does not have an error.\n    \n        :Args:\n         - response - The JSON response from the WebDriver server as a dictionary\n           object.\n    \n        :Raises: If the response contains an error message.\n        \"\"\"\n        status = response.get('status', None)\n        if status is None or status == ErrorCode.SUCCESS:\n            return\n        value = None\n        message = response.get(\"message\", \"\")\n        screen = response.get(\"screen\", \"\")\n        stacktrace = None\n        if isinstance(status, int):\n            value_json = response.get('value', None)\n            if value_json and isinstance(value_json, basestring):\n                import json\n                try:\n                    value = json.loads(value_json)\n                    if len(value.keys()) == 1:\n                        value = value['value']\n                    status = value.get('error', None)\n                    if status is None:\n                        status = value[\"status\"]\n                        message = value[\"value\"]\n                        if not isinstance(message, basestring):\n                            value = message\n                            message = message.get('message')\n                    else:\n                        message = value.get('message', None)\n                except ValueError:\n                    pass\n    \n        exception_class = ErrorInResponseException\n        if status in ErrorCode.NO_SUCH_ELEMENT:\n            exception_class = NoSuchElementException\n        elif status in ErrorCode.NO_SUCH_FRAME:\n            exception_class = NoSuchFrameException\n        elif status in ErrorCode.NO_SUCH_WINDOW:\n            exception_class = NoSuchWindowException\n        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:\n            exception_class = StaleElementReferenceException\n        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:\n            exception_class = ElementNotVisibleException\n        elif status in ErrorCode.INVALID_ELEMENT_STATE:\n            exception_class = InvalidElementStateException\n        elif status in ErrorCode.INVALID_SELECTOR \\\n                or status in ErrorCode.INVALID_XPATH_SELECTOR \\\n                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:\n            exception_class = InvalidSelectorException\n        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:\n            exception_class = ElementNotSelectableException\n        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:\n            exception_class = ElementNotInteractableException\n        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:\n            exception_class = InvalidCookieDomainException\n        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:\n            exception_class = UnableToSetCookieException\n        elif status in ErrorCode.TIMEOUT:\n            exception_class = TimeoutException\n        elif status in ErrorCode.SCRIPT_TIMEOUT:\n            exception_class = TimeoutException\n        elif status in ErrorCode.UNKNOWN_ERROR:\n            exception_class = WebDriverException\n        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:\n            exception_class = UnexpectedAlertPresentException\n        elif status in ErrorCode.NO_ALERT_OPEN:\n            exception_class = NoAlertPresentException\n        elif status in ErrorCode.IME_NOT_AVAILABLE:\n            exception_class = ImeNotAvailableException\n        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:\n            exception_class = ImeActivationFailedException\n        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:\n            exception_class = MoveTargetOutOfBoundsException\n        elif status in ErrorCode.JAVASCRIPT_ERROR:\n            exception_class = JavascriptException\n        elif status in ErrorCode.SESSION_NOT_CREATED:\n            exception_class = SessionNotCreatedException\n        elif status in ErrorCode.INVALID_ARGUMENT:\n            exception_class = InvalidArgumentException\n        elif status in ErrorCode.NO_SUCH_COOKIE:\n            exception_class = NoSuchCookieException\n        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:\n            exception_class = ScreenshotException\n        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:\n            exception_class = ElementClickInterceptedException\n        elif status in ErrorCode.INSECURE_CERTIFICATE:\n            exception_class = InsecureCertificateException\n        elif status in ErrorCode.INVALID_COORDINATES:\n            exception_class = InvalidCoordinatesException\n        elif status in ErrorCode.INVALID_SESSION_ID:\n            exception_class = InvalidSessionIdException\n        elif status in ErrorCode.UNKNOWN_METHOD:\n            exception_class = UnknownMethodException\n        else:\n            exception_class = WebDriverException\n        if value == '' or value is None:\n            value = response['value']\n        if isinstance(value, basestring):\n            if exception_class == ErrorInResponseException:\n                raise exception_class(response, value)\n            raise exception_class(value)\n        if message == \"\" and 'message' in value:\n            message = value['message']\n    \n        screen = None\n        if 'screen' in value:\n            screen = value['screen']\n    \n        stacktrace = None\n        if 'stackTrace' in value and value['stackTrace']:\n            stacktrace = []\n            try:\n                for frame in value['stackTrace']:\n                    line = self._value_or_default(frame, 'lineNumber', '')\n                    file = self._value_or_default(frame, 'fileName', '<anonymous>')\n                    if line:\n                        file = \"%s:%s\" % (file, line)\n                    meth = self._value_or_default(frame, 'methodName', '<anonymous>')\n                    if 'className' in frame:\n                        meth = \"%s.%s\" % (frame['className'], meth)\n                    msg = \"    at %s (%s)\"\n                    msg = msg % (meth, file)\n                    stacktrace.append(msg)\n            except TypeError:\n                pass\n        if exception_class == ErrorInResponseException:\n            raise exception_class(response, message)\n        elif exception_class == UnexpectedAlertPresentException:\n            alert_text = None\n            if 'data' in value:\n                alert_text = value['data'].get('text')\n            elif 'alert' in value:\n                alert_text = value['alert'].get('text')\n            raise exception_class(message, screen, stacktrace, alert_text)\n>       raise exception_class(message, screen, stacktrace)\nE       selenium.common.exceptions.JavascriptException: Message: javascript error: Failed to execute 'elementsFromPoint' on 'Document': The provided double value is non-finite.\nE         (Session info: chrome=88.0.4324.104)\n\nE:\\Python\\Python37\\lib\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py:242: JavascriptException",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "xunit_setup_class_fixture_Test_BaiduSearch",
+    "time" : {
+      "start" : 1612421295200,
+      "stop" : 1612421295224,
+      "duration" : 24
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "testStage" : {
+    "description" : "\n        登录case用例\n        :param params:\n        :return:\n        ",
+    "status" : "broken",
+    "statusMessage" : "selenium.common.exceptions.JavascriptException: Message: javascript error: Failed to execute 'elementsFromPoint' on 'Document': The provided double value is non-finite.\n  (Session info: chrome=88.0.4324.104)",
+    "statusTrace" : "self = <testcase.test_case01.Test_BaiduSearch object at 0x00000266F684E0B8>\nparams = [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\...p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]\n\n    @pytest.mark.parametrize('params',list(Data_().data03(3)))\n    def test01(self,params):\n        '''\n        登录case用例\n        :param params:\n        :return:\n        '''\n        self.test = BasePage(self.driver)\n        params=params[0]['tital']\n        print(params)\n        # input('>>>')\n        for i in params:\n            if i!=None:\n                with allure.step(i[0]):\n                    func=getattr(self.test,i[1])\n                    cases = [i for i in list(i[2:]) if i != '' and i !='\\n']\n                    print(cases)\n>                   func(*cases)\n\ntest_case01.py:198: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n..\\framework\\base_page.py:216: in move_to_elements\n    ActionChains(self.driver).move_to_element(i).perform()\nE:\\Python\\Python37\\lib\\site-packages\\selenium\\webdriver\\common\\action_chains.py:80: in perform\n    self.w3c_actions.perform()\nE:\\Python\\Python37\\lib\\site-packages\\selenium\\webdriver\\common\\actions\\action_builder.py:76: in perform\n    self.driver.execute(Command.W3C_ACTIONS, enc)\nE:\\Python\\Python37\\lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py:321: in execute\n    self.error_handler.check_response(response)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x00000266F63F0DD8>\nresponse = {'status': 500, 'value': '{\"value\":{\"error\":\"javascript error\",\"message\":\"javascript error: Failed to execute \\'elemen...\\n\\\\tRtlGetAppContainerNamedObjectPath [0x77E28944+228]\\\\n\\\\tRtlGetAppContainerNamedObjectPath [0x77E28914+180]\\\\n\"}}'}\n\n    def check_response(self, response):\n        \"\"\"\n        Checks that a JSON response from the WebDriver does not have an error.\n    \n        :Args:\n         - response - The JSON response from the WebDriver server as a dictionary\n           object.\n    \n        :Raises: If the response contains an error message.\n        \"\"\"\n        status = response.get('status', None)\n        if status is None or status == ErrorCode.SUCCESS:\n            return\n        value = None\n        message = response.get(\"message\", \"\")\n        screen = response.get(\"screen\", \"\")\n        stacktrace = None\n        if isinstance(status, int):\n            value_json = response.get('value', None)\n            if value_json and isinstance(value_json, basestring):\n                import json\n                try:\n                    value = json.loads(value_json)\n                    if len(value.keys()) == 1:\n                        value = value['value']\n                    status = value.get('error', None)\n                    if status is None:\n                        status = value[\"status\"]\n                        message = value[\"value\"]\n                        if not isinstance(message, basestring):\n                            value = message\n                            message = message.get('message')\n                    else:\n                        message = value.get('message', None)\n                except ValueError:\n                    pass\n    \n        exception_class = ErrorInResponseException\n        if status in ErrorCode.NO_SUCH_ELEMENT:\n            exception_class = NoSuchElementException\n        elif status in ErrorCode.NO_SUCH_FRAME:\n            exception_class = NoSuchFrameException\n        elif status in ErrorCode.NO_SUCH_WINDOW:\n            exception_class = NoSuchWindowException\n        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:\n            exception_class = StaleElementReferenceException\n        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:\n            exception_class = ElementNotVisibleException\n        elif status in ErrorCode.INVALID_ELEMENT_STATE:\n            exception_class = InvalidElementStateException\n        elif status in ErrorCode.INVALID_SELECTOR \\\n                or status in ErrorCode.INVALID_XPATH_SELECTOR \\\n                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:\n            exception_class = InvalidSelectorException\n        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:\n            exception_class = ElementNotSelectableException\n        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:\n            exception_class = ElementNotInteractableException\n        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:\n            exception_class = InvalidCookieDomainException\n        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:\n            exception_class = UnableToSetCookieException\n        elif status in ErrorCode.TIMEOUT:\n            exception_class = TimeoutException\n        elif status in ErrorCode.SCRIPT_TIMEOUT:\n            exception_class = TimeoutException\n        elif status in ErrorCode.UNKNOWN_ERROR:\n            exception_class = WebDriverException\n        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:\n            exception_class = UnexpectedAlertPresentException\n        elif status in ErrorCode.NO_ALERT_OPEN:\n            exception_class = NoAlertPresentException\n        elif status in ErrorCode.IME_NOT_AVAILABLE:\n            exception_class = ImeNotAvailableException\n        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:\n            exception_class = ImeActivationFailedException\n        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:\n            exception_class = MoveTargetOutOfBoundsException\n        elif status in ErrorCode.JAVASCRIPT_ERROR:\n            exception_class = JavascriptException\n        elif status in ErrorCode.SESSION_NOT_CREATED:\n            exception_class = SessionNotCreatedException\n        elif status in ErrorCode.INVALID_ARGUMENT:\n            exception_class = InvalidArgumentException\n        elif status in ErrorCode.NO_SUCH_COOKIE:\n            exception_class = NoSuchCookieException\n        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:\n            exception_class = ScreenshotException\n        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:\n            exception_class = ElementClickInterceptedException\n        elif status in ErrorCode.INSECURE_CERTIFICATE:\n            exception_class = InsecureCertificateException\n        elif status in ErrorCode.INVALID_COORDINATES:\n            exception_class = InvalidCoordinatesException\n        elif status in ErrorCode.INVALID_SESSION_ID:\n            exception_class = InvalidSessionIdException\n        elif status in ErrorCode.UNKNOWN_METHOD:\n            exception_class = UnknownMethodException\n        else:\n            exception_class = WebDriverException\n        if value == '' or value is None:\n            value = response['value']\n        if isinstance(value, basestring):\n            if exception_class == ErrorInResponseException:\n                raise exception_class(response, value)\n            raise exception_class(value)\n        if message == \"\" and 'message' in value:\n            message = value['message']\n    \n        screen = None\n        if 'screen' in value:\n            screen = value['screen']\n    \n        stacktrace = None\n        if 'stackTrace' in value and value['stackTrace']:\n            stacktrace = []\n            try:\n                for frame in value['stackTrace']:\n                    line = self._value_or_default(frame, 'lineNumber', '')\n                    file = self._value_or_default(frame, 'fileName', '<anonymous>')\n                    if line:\n                        file = \"%s:%s\" % (file, line)\n                    meth = self._value_or_default(frame, 'methodName', '<anonymous>')\n                    if 'className' in frame:\n                        meth = \"%s.%s\" % (frame['className'], meth)\n                    msg = \"    at %s (%s)\"\n                    msg = msg % (meth, file)\n                    stacktrace.append(msg)\n            except TypeError:\n                pass\n        if exception_class == ErrorInResponseException:\n            raise exception_class(response, message)\n        elif exception_class == UnexpectedAlertPresentException:\n            alert_text = None\n            if 'data' in value:\n                alert_text = value['data'].get('text')\n            elif 'alert' in value:\n                alert_text = value['alert'].get('text')\n            raise exception_class(message, screen, stacktrace, alert_text)\n>       raise exception_class(message, screen, stacktrace)\nE       selenium.common.exceptions.JavascriptException: Message: javascript error: Failed to execute 'elementsFromPoint' on 'Document': The provided double value is non-finite.\nE         (Session info: chrome=88.0.4324.104)\n\nE:\\Python\\Python37\\lib\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py:242: JavascriptException",
+    "steps" : [ {
+      "name" : "高级设置",
+      "time" : {
+        "start" : 1612421300815,
+        "stop" : 1612421304136,
+        "duration" : 3321
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "d1a8ef53a885e707",
+        "name" : "截图",
+        "source" : "d1a8ef53a885e707.png",
+        "type" : "image/png",
+        "size" : 30525
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 1
+    }, {
+      "name" : "继续",
+      "time" : {
+        "start" : 1612421304136,
+        "stop" : 1612421315289,
+        "duration" : 11153
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "ef6ffba50bff7f52",
+        "name" : "截图",
+        "source" : "ef6ffba50bff7f52.png",
+        "type" : "image/png",
+        "size" : 42996
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 1
+    }, {
+      "name" : "去除弹框",
+      "time" : {
+        "start" : 1612421315289,
+        "stop" : 1612421318858,
+        "duration" : 3569
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "cdb85b862b8c1217",
+        "name" : "截图",
+        "source" : "cdb85b862b8c1217.png",
+        "type" : "image/png",
+        "size" : 1089490
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 1
+    }, {
+      "name" : "点击首页",
+      "time" : {
+        "start" : 1612421318858,
+        "stop" : 1612421326966,
+        "duration" : 8108
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "96467525547e7c9c",
+        "name" : "截图",
+        "source" : "96467525547e7c9c.png",
+        "type" : "image/png",
+        "size" : 1027916
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 1
+    }, {
+      "name" : "查看首页的Default Category",
+      "time" : {
+        "start" : 1612421326966,
+        "stop" : 1612421605319,
+        "duration" : 278353
+      },
+      "status" : "broken",
+      "statusMessage" : "selenium.common.exceptions.JavascriptException: Message: javascript error: Failed to execute 'elementsFromPoint' on 'Document': The provided double value is non-finite.\n  (Session info: chrome=88.0.4324.104)\n\n",
+      "statusTrace" : "  File \"E:\\nh\\testcase\\test_case01.py\", line 198, in test01\n    func(*cases)\n  File \"E:\\nh\\framework\\base_page.py\", line 216, in move_to_elements\n    ActionChains(self.driver).move_to_element(i).perform()\n  File \"E:\\Python\\Python37\\lib\\site-packages\\selenium\\webdriver\\common\\action_chains.py\", line 80, in perform\n    self.w3c_actions.perform()\n  File \"E:\\Python\\Python37\\lib\\site-packages\\selenium\\webdriver\\common\\actions\\action_builder.py\", line 76, in perform\n    self.driver.execute(Command.W3C_ACTIONS, enc)\n  File \"E:\\Python\\Python37\\lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 321, in execute\n    self.error_handler.check_response(response)\n  File \"E:\\Python\\Python37\\lib\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py\", line 242, in check_response\n    raise exception_class(message, screen, stacktrace)\n",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "c8e31ac181e24040",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"de84e9d9-9bca-462b-b036-9d799c44b495\")>",
+        "source" : "c8e31ac181e24040.png",
+        "type" : "image/png",
+        "size" : 825826
+      }, {
+        "uid" : "438a9e0eb6274ded",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"4bc92132-b3be-4994-8cb5-77c720295f46\")>",
+        "source" : "438a9e0eb6274ded.png",
+        "type" : "image/png",
+        "size" : 831411
+      }, {
+        "uid" : "8189f09eb1f3b745",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"b658785f-4815-4d4f-befa-23e8ffd4d2e5\")>",
+        "source" : "8189f09eb1f3b745.png",
+        "type" : "image/png",
+        "size" : 831898
+      }, {
+        "uid" : "feaa66a4b409618a",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"b04905d7-0a59-4696-87d2-a029ce9baa38\")>",
+        "source" : "feaa66a4b409618a.png",
+        "type" : "image/png",
+        "size" : 831228
+      }, {
+        "uid" : "dff92ecae925404b",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"1156df5e-2790-4084-af41-15a0ff15bdbf\")>",
+        "source" : "dff92ecae925404b.png",
+        "type" : "image/png",
+        "size" : 830343
+      }, {
+        "uid" : "99efc4c5b385bdfc",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"9e46197b-912e-49aa-922d-5d0ff3c0b284\")>",
+        "source" : "99efc4c5b385bdfc.png",
+        "type" : "image/png",
+        "size" : 831440
+      }, {
+        "uid" : "bea0c531aeae7c7c",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"0dada5b7-44ad-4ecd-b452-bf0777012631\")>",
+        "source" : "bea0c531aeae7c7c.png",
+        "type" : "image/png",
+        "size" : 831397
+      }, {
+        "uid" : "73eb6b9bb6c00bb5",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"4b9d0ae8-69b5-472a-b6bd-80d81d63772e\")>",
+        "source" : "73eb6b9bb6c00bb5.png",
+        "type" : "image/png",
+        "size" : 831661
+      }, {
+        "uid" : "194828c41bcac1c3",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"0f2c4224-6d2c-430c-aaff-51b3923ebeb2\")>",
+        "source" : "194828c41bcac1c3.png",
+        "type" : "image/png",
+        "size" : 831476
+      }, {
+        "uid" : "922683d4e6e2d786",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"e30ca94a-39a1-4f23-bfb4-e7966e9959b9\")>",
+        "source" : "922683d4e6e2d786.png",
+        "type" : "image/png",
+        "size" : 831233
+      }, {
+        "uid" : "e4fedfa1414a7446",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"79e2b4d9-095b-4c74-ab61-7557a88b88bc\")>",
+        "source" : "e4fedfa1414a7446.png",
+        "type" : "image/png",
+        "size" : 831358
+      }, {
+        "uid" : "41010ba05449fe4f",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"ff0ced19-4490-4a2e-9f24-0a311e4aad3e\")>",
+        "source" : "41010ba05449fe4f.png",
+        "type" : "image/png",
+        "size" : 830691
+      }, {
+        "uid" : "31c9ba95f9c38389",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"db79ae33-0b6c-4eb6-97ef-2a4b7f5ae6d8\")>",
+        "source" : "31c9ba95f9c38389.png",
+        "type" : "image/png",
+        "size" : 832126
+      }, {
+        "uid" : "426196921299458f",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"1a8a7e24-4d91-4658-a93d-3fd0c08521c5\")>",
+        "source" : "426196921299458f.png",
+        "type" : "image/png",
+        "size" : 832319
+      }, {
+        "uid" : "87aa88f5f0cb4ae2",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"e1b3e7de-15cc-4b3a-9d71-5d216c5987cd\")>",
+        "source" : "87aa88f5f0cb4ae2.png",
+        "type" : "image/png",
+        "size" : 832115
+      }, {
+        "uid" : "8f268af69650c869",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"056e8560-dedf-447d-8baf-ed829f12d18b\")>",
+        "source" : "8f268af69650c869.png",
+        "type" : "image/png",
+        "size" : 831991
+      }, {
+        "uid" : "aad983b16028a7ec",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"2b4d4a01-5286-4414-8bf5-24c14bc955eb\")>",
+        "source" : "aad983b16028a7ec.png",
+        "type" : "image/png",
+        "size" : 831939
+      }, {
+        "uid" : "3914cde04b7bc261",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"391e56e4-8699-43f5-b44d-e159d37554ca\")>",
+        "source" : "3914cde04b7bc261.png",
+        "type" : "image/png",
+        "size" : 831087
+      }, {
+        "uid" : "fe9fbf8e88d8a2b6",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"924d7364-c9d5-4b0c-98a2-604611054753\")>",
+        "source" : "fe9fbf8e88d8a2b6.png",
+        "type" : "image/png",
+        "size" : 831981
+      }, {
+        "uid" : "84d3d4a7eac347d4",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"92fb081f-7b2a-4d54-a8d7-99bebad3a680\")>",
+        "source" : "84d3d4a7eac347d4.png",
+        "type" : "image/png",
+        "size" : 832116
+      }, {
+        "uid" : "74fb803a71d25cbe",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"59eb516c-a46a-4212-bc5c-f5a2f8e41a43\")>",
+        "source" : "74fb803a71d25cbe.png",
+        "type" : "image/png",
+        "size" : 832178
+      }, {
+        "uid" : "6a5cd8fa3fc50908",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"6f8ccb29-4cef-4802-94d7-28cee29730a4\")>",
+        "source" : "6a5cd8fa3fc50908.png",
+        "type" : "image/png",
+        "size" : 832194
+      }, {
+        "uid" : "9ca475f0686f8584",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"33ac1c0a-eee8-4dad-818a-e2904fe43b65\")>",
+        "source" : "9ca475f0686f8584.png",
+        "type" : "image/png",
+        "size" : 831533
+      }, {
+        "uid" : "611b80458f52cb4b",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"625c958f-9fa4-497c-a736-699ff6420d75\")>",
+        "source" : "611b80458f52cb4b.png",
+        "type" : "image/png",
+        "size" : 831990
+      }, {
+        "uid" : "78d4becba03cc5bd",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"b263465f-ab8d-4105-8d49-d7d821730a88\")>",
+        "source" : "78d4becba03cc5bd.png",
+        "type" : "image/png",
+        "size" : 831310
+      }, {
+        "uid" : "94fdcfeadb0afe6f",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"3e0e27a7-33dd-49e1-b495-a4c06601885b\")>",
+        "source" : "94fdcfeadb0afe6f.png",
+        "type" : "image/png",
+        "size" : 832109
+      }, {
+        "uid" : "fa1f299037201c49",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"37be61cd-9088-43d7-a942-f57f4a7fe847\")>",
+        "source" : "fa1f299037201c49.png",
+        "type" : "image/png",
+        "size" : 832115
+      }, {
+        "uid" : "bcd70e9fe096726d",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"93add27c-7628-473d-bee9-648f6fd5cb30\")>",
+        "source" : "bcd70e9fe096726d.png",
+        "type" : "image/png",
+        "size" : 832135
+      }, {
+        "uid" : "bac0958a414cacd5",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"4f17daa9-df13-4fb9-b9f9-0bb739839553\")>",
+        "source" : "bac0958a414cacd5.png",
+        "type" : "image/png",
+        "size" : 832025
+      }, {
+        "uid" : "43dd6f38bdfaf998",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"4b83cd54-625d-4124-ba34-6a220af9ef96\")>",
+        "source" : "43dd6f38bdfaf998.png",
+        "type" : "image/png",
+        "size" : 831928
+      }, {
+        "uid" : "50ce71c1d312dc1b",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"507425cf-a7d7-45d5-9a77-042ac02ee2a8\")>",
+        "source" : "50ce71c1d312dc1b.png",
+        "type" : "image/png",
+        "size" : 831930
+      }, {
+        "uid" : "8bbf8065f9e5282",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"aff76d2c-2e45-4794-8ef7-490466e291f1\")>",
+        "source" : "8bbf8065f9e5282.png",
+        "type" : "image/png",
+        "size" : 831160
+      }, {
+        "uid" : "d4f78f9685100199",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"9971ce0c-2cfe-4eb7-ba9a-efe9370d77a3\")>",
+        "source" : "d4f78f9685100199.png",
+        "type" : "image/png",
+        "size" : 832146
+      }, {
+        "uid" : "2bcc000f8bd21206",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"dfac6b81-0947-4ceb-918c-6582a82687e3\")>",
+        "source" : "2bcc000f8bd21206.png",
+        "type" : "image/png",
+        "size" : 831369
+      }, {
+        "uid" : "c5e26cf55b87ffd4",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"e48b0f7d-3619-49f7-a050-20e08031bc20\")>",
+        "source" : "c5e26cf55b87ffd4.png",
+        "type" : "image/png",
+        "size" : 831400
+      }, {
+        "uid" : "57ad48d38ea7d281",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"7697bdb9-aab6-41f0-8626-9cbdd2f6d2a9\")>",
+        "source" : "57ad48d38ea7d281.png",
+        "type" : "image/png",
+        "size" : 831056
+      }, {
+        "uid" : "4441775ea67e1b1d",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"6400114c-32c2-4984-b1cd-2bf369f6542b\")>",
+        "source" : "4441775ea67e1b1d.png",
+        "type" : "image/png",
+        "size" : 831083
+      }, {
+        "uid" : "6534f42e236beea2",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"d979830a-67b5-4233-965d-d715b5b3ecf7\")>",
+        "source" : "6534f42e236beea2.png",
+        "type" : "image/png",
+        "size" : 830252
+      }, {
+        "uid" : "56bb2b548c93d72c",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"107118ca-8117-4cd2-af4a-e840597a2c35\")>",
+        "source" : "56bb2b548c93d72c.png",
+        "type" : "image/png",
+        "size" : 831398
+      }, {
+        "uid" : "d541b0954854453e",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"84850d5c-e57c-4327-b9ed-8270c5ee9450\")>",
+        "source" : "d541b0954854453e.png",
+        "type" : "image/png",
+        "size" : 831307
+      }, {
+        "uid" : "f2abefacfcee33a1",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"fc3ac04d-10be-4930-b3b4-31788f84a373\")>",
+        "source" : "f2abefacfcee33a1.png",
+        "type" : "image/png",
+        "size" : 831309
+      }, {
+        "uid" : "3ca805012c9e6eea",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"0fdac676-66b8-4aaa-9052-8d486233e332\")>",
+        "source" : "3ca805012c9e6eea.png",
+        "type" : "image/png",
+        "size" : 831302
+      }, {
+        "uid" : "2bdb161f099d4428",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"1d9141d2-42e2-4212-9904-06af8f48ea59\")>",
+        "source" : "2bdb161f099d4428.png",
+        "type" : "image/png",
+        "size" : 831083
+      }, {
+        "uid" : "76008866491203e",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"a4ae101b-bd05-4e63-805b-966fcb62a5dd\")>",
+        "source" : "76008866491203e.png",
+        "type" : "image/png",
+        "size" : 831197
+      }, {
+        "uid" : "62745420d3491625",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"5ecc140a-105a-4834-a8f0-9dea740ff410\")>",
+        "source" : "62745420d3491625.png",
+        "type" : "image/png",
+        "size" : 830252
+      }, {
+        "uid" : "6c7a5d5089a04f9e",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"eab0a794-51f5-4c24-a4a8-eabeb9c98444\")>",
+        "source" : "6c7a5d5089a04f9e.png",
+        "type" : "image/png",
+        "size" : 462092
+      }, {
+        "uid" : "69e769161a325fd1",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"093aadae-bc62-4e24-8e62-e0a1cba84673\")>",
+        "source" : "69e769161a325fd1.png",
+        "type" : "image/png",
+        "size" : 462099
+      }, {
+        "uid" : "e8372bad33ec29ce",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"e06a35a3-f672-4afa-aff3-91b0d748ce1e\")>",
+        "source" : "e8372bad33ec29ce.png",
+        "type" : "image/png",
+        "size" : 461999
+      }, {
+        "uid" : "5b3b0105d61807a8",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"5351642c-8315-479e-bc6e-77f02b39b6d1\")>",
+        "source" : "5b3b0105d61807a8.png",
+        "type" : "image/png",
+        "size" : 462637
+      }, {
+        "uid" : "c4174bb97af4ecb8",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"7541d20b-f26a-4968-b800-c80a22c9cd43\")>",
+        "source" : "c4174bb97af4ecb8.png",
+        "type" : "image/png",
+        "size" : 462245
+      }, {
+        "uid" : "c12c6ffc6dfa4ba7",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"b52769ae-f1ed-4e9b-abae-f0c0294c59e1\")>",
+        "source" : "c12c6ffc6dfa4ba7.png",
+        "type" : "image/png",
+        "size" : 462498
+      }, {
+        "uid" : "2faa88681841e69c",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"f75b6e13-d1e5-43e8-bcdc-8fdc257818b8\")>",
+        "source" : "2faa88681841e69c.png",
+        "type" : "image/png",
+        "size" : 461752
+      }, {
+        "uid" : "da5bc6b1992e8d4a",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"8b4aaf7c-01cf-4e0d-86a8-e61a36b0aced\")>",
+        "source" : "da5bc6b1992e8d4a.png",
+        "type" : "image/png",
+        "size" : 462304
+      }, {
+        "uid" : "de6375c56e979bc9",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"fb7f577e-c44c-4f9c-b6fe-e1629df404f9\")>",
+        "source" : "de6375c56e979bc9.png",
+        "type" : "image/png",
+        "size" : 462598
+      }, {
+        "uid" : "710117ae8ab5863d",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"2f91c049-0ae7-4e6c-acea-894477bdc3b1\")>",
+        "source" : "710117ae8ab5863d.png",
+        "type" : "image/png",
+        "size" : 461999
+      }, {
+        "uid" : "258ebb075c3d2ac1",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"c771528d-7e74-4c99-bcee-7fe9f5558302\")>",
+        "source" : "258ebb075c3d2ac1.png",
+        "type" : "image/png",
+        "size" : 462346
+      }, {
+        "uid" : "bc0516af7eee9c3a",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"72184935-0a18-4f0a-9058-b923b8219758\")>",
+        "source" : "bc0516af7eee9c3a.png",
+        "type" : "image/png",
+        "size" : 462110
+      }, {
+        "uid" : "c42c8f18ecbf5dc7",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"04712fcf-d6e2-47a1-a137-8a15a7d1a741\")>",
+        "source" : "c42c8f18ecbf5dc7.png",
+        "type" : "image/png",
+        "size" : 461790
+      }, {
+        "uid" : "fddce45be0807d41",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"c3bd6d26-d233-4316-8e3a-2dda834e0486\")>",
+        "source" : "fddce45be0807d41.png",
+        "type" : "image/png",
+        "size" : 462387
+      }, {
+        "uid" : "11008bd23c749c88",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"76cd2e34-aa76-413f-b59c-137d2b556b69\")>",
+        "source" : "11008bd23c749c88.png",
+        "type" : "image/png",
+        "size" : 462575
+      }, {
+        "uid" : "45c145ba3341163a",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"b5c70dc5-b8bc-4a27-a154-e39b4afc2a64\")>",
+        "source" : "45c145ba3341163a.png",
+        "type" : "image/png",
+        "size" : 462808
+      }, {
+        "uid" : "4727b7205e196569",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"9843a3bb-0223-4a03-8a8a-17b8f4cd2f88\")>",
+        "source" : "4727b7205e196569.png",
+        "type" : "image/png",
+        "size" : 463156
+      }, {
+        "uid" : "a7bebf7264ae8c4",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"794408dd-04be-4806-9b3d-f82c940be9a4\")>",
+        "source" : "a7bebf7264ae8c4.png",
+        "type" : "image/png",
+        "size" : 462581
+      }, {
+        "uid" : "c812ab29f7d732c1",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"0d02b639-f300-4edf-9d6a-5eb65bcc68af\")>",
+        "source" : "c812ab29f7d732c1.png",
+        "type" : "image/png",
+        "size" : 462371
+      }, {
+        "uid" : "d7b36e4d2149df35",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"f897b75a-976c-415e-aff5-8563436c68ea\")>",
+        "source" : "d7b36e4d2149df35.png",
+        "type" : "image/png",
+        "size" : 461848
+      }, {
+        "uid" : "28d104d294834e6c",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"a189f3c1-0694-4fa4-9aad-2e3ba4edc776\")>",
+        "source" : "28d104d294834e6c.png",
+        "type" : "image/png",
+        "size" : 462514
+      }, {
+        "uid" : "16ca138665a976a0",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"3f268fcc-3ee4-4478-a7ff-e7f3b8e9b0ee\")>",
+        "source" : "16ca138665a976a0.png",
+        "type" : "image/png",
+        "size" : 462099
+      }, {
+        "uid" : "a7eb9d0ac7d146e1",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"4e8bb05a-9cfc-453d-8029-1a8f3968d803\")>",
+        "source" : "a7eb9d0ac7d146e1.png",
+        "type" : "image/png",
+        "size" : 462506
+      }, {
+        "uid" : "9473e6235437fd87",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"916bd9fb-8ab0-4f65-b5d9-2bd30605cd5f\")>",
+        "source" : "9473e6235437fd87.png",
+        "type" : "image/png",
+        "size" : 462328
+      }, {
+        "uid" : "93cffc7c74a9da83",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"12d81e3c-ad50-4ce9-b24d-3ebd101c1fcb\")>",
+        "source" : "93cffc7c74a9da83.png",
+        "type" : "image/png",
+        "size" : 462084
+      }, {
+        "uid" : "6990eb07dd619133",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"b737cbd8-54e1-4b63-924a-e5556525ad05\")>",
+        "source" : "6990eb07dd619133.png",
+        "type" : "image/png",
+        "size" : 462780
+      }, {
+        "uid" : "88627d0353f9d14b",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"3a78f193-183d-4856-b0ac-47c05d171be2\")>",
+        "source" : "88627d0353f9d14b.png",
+        "type" : "image/png",
+        "size" : 461511
+      }, {
+        "uid" : "9874b214d8c93d98",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"3e9a1456-d1b4-477a-af66-4f8cfcfe3915\")>",
+        "source" : "9874b214d8c93d98.png",
+        "type" : "image/png",
+        "size" : 462103
+      }, {
+        "uid" : "42f8b75d75c01e27",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"bd956d8c-a125-4342-b331-f2deeec9717c\")>",
+        "source" : "42f8b75d75c01e27.png",
+        "type" : "image/png",
+        "size" : 462642
+      }, {
+        "uid" : "55240147b5aae4b1",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"fd9215c8-f6de-47b6-9991-4e0c31ff867e\")>",
+        "source" : "55240147b5aae4b1.png",
+        "type" : "image/png",
+        "size" : 462512
+      }, {
+        "uid" : "942260f7b7210b61",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"64909743-c124-4f54-a5be-699cf46bab21\")>",
+        "source" : "942260f7b7210b61.png",
+        "type" : "image/png",
+        "size" : 462568
+      }, {
+        "uid" : "5e75bb51072ed782",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"12d57d3f-d0ab-4892-ba33-79ee7e7f9ca8\")>",
+        "source" : "5e75bb51072ed782.png",
+        "type" : "image/png",
+        "size" : 462065
+      }, {
+        "uid" : "31349e6ef9bdecf",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"39d4789f-04b0-4cc5-9592-4ae9bea1ed71\")>",
+        "source" : "31349e6ef9bdecf.png",
+        "type" : "image/png",
+        "size" : 462434
+      }, {
+        "uid" : "6e725aa8c3738966",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"5fe1d1d3-6f36-43cf-8cca-13eb591e028b\")>",
+        "source" : "6e725aa8c3738966.png",
+        "type" : "image/png",
+        "size" : 461337
+      }, {
+        "uid" : "18bedb0fc89d0b05",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"6e326b41-f248-4f48-9c0a-5b6a4de616e1\")>",
+        "source" : "18bedb0fc89d0b05.png",
+        "type" : "image/png",
+        "size" : 462150
+      }, {
+        "uid" : "baa7b7ea38e7161a",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"b1c24d0a-ab92-4177-8fa8-92130991123b\")>",
+        "source" : "baa7b7ea38e7161a.png",
+        "type" : "image/png",
+        "size" : 462130
+      }, {
+        "uid" : "f3615c11eb1b0359",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"9838a404-483f-4208-b091-26f7afb6918e\")>",
+        "source" : "f3615c11eb1b0359.png",
+        "type" : "image/png",
+        "size" : 1275683
+      }, {
+        "uid" : "f25f416fe4b06166",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"4fd3cd3a-322b-4ee3-93a1-c262d10e1998\")>",
+        "source" : "f25f416fe4b06166.png",
+        "type" : "image/png",
+        "size" : 1267521
+      }, {
+        "uid" : "93c2859da7ecba8f",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"0d272ef0-229e-4f15-89d6-1cd1eac05df2\")>",
+        "source" : "93c2859da7ecba8f.png",
+        "type" : "image/png",
+        "size" : 1130746
+      }, {
+        "uid" : "3ac28896a073b550",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"4d0d716a-d837-4ecb-99e1-a0892f102100\")>",
+        "source" : "3ac28896a073b550.png",
+        "type" : "image/png",
+        "size" : 679192
+      }, {
+        "uid" : "4136cd5b7bb6c53f",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"d3b9e4ed-95dd-4b01-814d-d8342b1e07c4\")>",
+        "source" : "4136cd5b7bb6c53f.png",
+        "type" : "image/png",
+        "size" : 678742
+      }, {
+        "uid" : "a4a31bc90caa7f6a",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"82f77731-1b63-4782-8601-cdcda8c5111e\")>",
+        "source" : "a4a31bc90caa7f6a.png",
+        "type" : "image/png",
+        "size" : 679891
+      }, {
+        "uid" : "f1822202ffa5033f",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"6ad2ae6b-3308-48e0-8a9b-5cd03ef5b753\")>",
+        "source" : "f1822202ffa5033f.png",
+        "type" : "image/png",
+        "size" : 680117
+      }, {
+        "uid" : "72e2d5e34bfbda9c",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"a09593dd-680f-4636-8894-40b702c8382b\")>",
+        "source" : "72e2d5e34bfbda9c.png",
+        "type" : "image/png",
+        "size" : 679787
+      }, {
+        "uid" : "3191d2f0cecbb3f2",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"4fa6b5a7-636c-4d33-bb63-b9b26ce704a1\")>",
+        "source" : "3191d2f0cecbb3f2.png",
+        "type" : "image/png",
+        "size" : 679619
+      }, {
+        "uid" : "ed3938defe377b24",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"a5ee3f0d-7564-46c6-aaaa-10eb3937474d\")>",
+        "source" : "ed3938defe377b24.png",
+        "type" : "image/png",
+        "size" : 679589
+      }, {
+        "uid" : "4f005ed4cc136beb",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"efce2fc1-3d08-4b7f-a012-95c78f911cd9\")>",
+        "source" : "4f005ed4cc136beb.png",
+        "type" : "image/png",
+        "size" : 678853
+      }, {
+        "uid" : "c72affdacc3813f2",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"4dc802a7-15f6-4903-a1b5-ad49e294ce30\")>",
+        "source" : "c72affdacc3813f2.png",
+        "type" : "image/png",
+        "size" : 679834
+      }, {
+        "uid" : "48cd16665fa5505d",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"82ecf234-abeb-4dc8-90bd-18d422765c4a\")>",
+        "source" : "48cd16665fa5505d.png",
+        "type" : "image/png",
+        "size" : 680179
+      }, {
+        "uid" : "fc1bcebf227f789",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"2b171f7e-f92f-4930-867e-9aa9eba9e796\")>",
+        "source" : "fc1bcebf227f789.png",
+        "type" : "image/png",
+        "size" : 679919
+      }, {
+        "uid" : "b31a0fb36abaa7bc",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"6ddf989c-c391-4d16-aa2c-1910daf682d8\")>",
+        "source" : "b31a0fb36abaa7bc.png",
+        "type" : "image/png",
+        "size" : 1088101
+      }, {
+        "uid" : "fc1e20c9f342934b",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"eb7d9df6-02f5-49de-9fff-485463b3391a\")>",
+        "source" : "fc1e20c9f342934b.png",
+        "type" : "image/png",
+        "size" : 943921
+      }, {
+        "uid" : "b6739812a26bc8a7",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"072eb38c-e53f-499d-a449-5d29fb4a2f13\")>",
+        "source" : "b6739812a26bc8a7.png",
+        "type" : "image/png",
+        "size" : 1078884
+      }, {
+        "uid" : "bc22d4799a596bc1",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"c1500975-1065-4e14-be75-06a7e8d0424b\")>",
+        "source" : "bc22d4799a596bc1.png",
+        "type" : "image/png",
+        "size" : 937807
+      }, {
+        "uid" : "539e4175d8dd1028",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"b1f80340-3dec-4faf-8b37-961c8cc09a67\")>",
+        "source" : "539e4175d8dd1028.png",
+        "type" : "image/png",
+        "size" : 831646
+      }, {
+        "uid" : "32720cfef0dfe21",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"d6772e35-4cbd-484b-8f52-f2e81e67472c\")>",
+        "source" : "32720cfef0dfe21.png",
+        "type" : "image/png",
+        "size" : 942038
+      }, {
+        "uid" : "e5f945911587f394",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"9463a7b8-27ab-4415-bd77-6093f696adb2\")>",
+        "source" : "e5f945911587f394.png",
+        "type" : "image/png",
+        "size" : 1088144
+      }, {
+        "uid" : "c6e34eb5a35392d1",
+        "name" : "步骤截图<selenium.webdriver.remote.webelement.WebElement (session=\"ecf0738c3f531b4dd409da90fa282d0b\", element=\"25126cee-d1d0-4019-8e42-2047691c116d\")>",
+        "source" : "c6e34eb5a35392d1.png",
+        "type" : "image/png",
+        "size" : 1039330
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "shouldDisplayMessage" : true,
+      "attachmentsCount" : 103
+    } ],
+    "attachments" : [ {
+      "uid" : "7722d37d68b95361",
+      "name" : "log",
+      "source" : "7722d37d68b95361.txt",
+      "type" : "text/plain",
+      "size" : 9741
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 5,
+    "hasContent" : true,
+    "shouldDisplayMessage" : true,
+    "attachmentsCount" : 108
+  },
+  "afterStages" : [ {
+    "name" : "xunit_setup_class_fixture_Test_BaiduSearch::0",
+    "time" : {
+      "start" : 1612421607730,
+      "stop" : 1612421607730,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "feature",
+    "value" : "登录模块"
+  }, {
+    "name" : "epic",
+    "value" : "项目名称: 旎浩"
+  }, {
+    "name" : "parentSuite",
+    "value" : "testcase"
+  }, {
+    "name" : "suite",
+    "value" : "test_case01"
+  }, {
+    "name" : "subSuite",
+    "value" : "Test_BaiduSearch"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-T311BD1"
+  }, {
+    "name" : "thread",
+    "value" : "16604-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "testcase.test_case01"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "params",
+    "value" : "[{'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}]"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "be42a45528ee8e78.json",
+  "parameterValues" : [ "[{'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}, {'tital': [['高级设置', 'click', 'xpath=>//*[@id=\"details-button\"]', '\\n', ''], ['继续', 'click', 'xpath=>//*[@id=\"proceed-link\"]', '\\n', ''], ['去除弹框', 'click', 'xpath=>//*[@id=\"modal-toRegister\"]/div[2]/div[1]', '\\n', ''], ['点击首页', 'click', 'xpath=>//*[@id=\"g-head\"]/div/p/a\\n', '', ''], ['查看首页的Default Category', 'move_to_elements', 'xpath=>//*[@id=\"navigationShowIndex\"]/div', 'div', '']]}]" ]
+}
