@@ -18,6 +18,7 @@ from selenium.webdriver.common.keys import Keys
 import allure
 logger=Logger()
 
+
 class BasePage(object):
     """
     定义一个页面基类，让所有页面都继承这个类，封装一些常用的页面操作方法到这个类
@@ -185,6 +186,7 @@ class BasePage(object):
                 ActionChains(self.driver).move_to_element(el).click().perform()
             except EnvironmentError as e:
                 logger.error(f"Failed to click the element with {e}")
+                self.get_windows_img('错误截图')
 
 
     # 或者网页标题
@@ -203,16 +205,16 @@ class BasePage(object):
         ActionChains(self.driver).move_to_element(el).perform()
 
     def move_to_elements(self,selector,tag):
-        print('来过0')
-        print(tag)
+
+
         selector_value = selector.split('=>')[1]
         dr=self.driver
-        print('来过1')
+
         el = dr.find_element_by_xpath(selector_value).find_elements_by_tag_name(tag)
-        print('来过2')
-        print(el)
+
+
         for i in el:
-            print('来过3')
+
             ActionChains(self.driver).move_to_element(i).perform()
             self.get_windows_img(f'步骤截图{i}')
             time.sleep(2)

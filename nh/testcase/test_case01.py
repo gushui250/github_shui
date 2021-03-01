@@ -141,17 +141,20 @@ import os
 import time
 # import unittest
 from framework.browser_engine import BrowserEngine
-from pageobjects.baidu_homepage import HomePage
 from framework.base_page import BasePage,Del
 import pytest
 import allure
 from data.data_chuli import Data_
+
+dir = os.path.dirname(os.path.abspath('.'))
+allure_path = dir + r'\tools\allure-2.13.8\bin\allure.bat'
 
 
 # @allure.feature('旎浩')
 @allure.epic("项目名称: 旎浩")
 @allure.feature("登录模块")
 class Test_BaiduSearch(object):
+
 
     def setup_class(self):
 
@@ -162,13 +165,14 @@ class Test_BaiduSearch(object):
         self.d.del_mulu(a[2])
 
 
+
     def setup(self):
         """
         测试固件的setUp()的代码，主要是测试的前提准备工作
         :return:
         """
-        browse = BrowserEngine(self)
-        self.driver = browse.open_browser(self)
+        browse = BrowserEngine()
+        self.driver = browse.open_browser('https://www.nhtest.com/')
 
 
     def teardown(self):
@@ -178,13 +182,15 @@ class Test_BaiduSearch(object):
         """
         self.driver.quit()
 
-    @pytest.mark.parametrize('params',list(Data_().data03(3)))
+
+    @pytest.mark.parametrize('params',list(Data_().data03(1)))
     def test01(self,params):
         '''
         登录case用例
         :param params:
         :return:
         '''
+
         self.test = BasePage(self.driver)
         params=params[0]['tital']
         print(params)
@@ -199,12 +205,13 @@ class Test_BaiduSearch(object):
                     time.sleep(3)
 
 
+
 if __name__ == '__main__':
     pytest.main(['-s', 'test_case01.py', '--alluredir', '../temp'])
-    dir = os.path.dirname(os.path.abspath('.'))
-    allure_path = dir + r'\tools\allure-2.13.8\bin\allure.bat'
+
     # print(allure_path)
     os.system(fr'{allure_path} generate ../temp -o ../report --clean')
+
 
 
 
@@ -214,7 +221,3 @@ if __name__ == '__main__':
 #     witr=csv.writer(f)
 #     a=[(1,2,3),(4,5,6)]
 #     witr.writerows(a)
-
-
-
-

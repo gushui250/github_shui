@@ -9,13 +9,13 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "be42a45528ee8e78",
+      "uid" : "7e08f48d6f7d3d7c",
       "status" : "broken",
-      "statusDetails" : "selenium.common.exceptions.JavascriptException: Message: javascript error: Failed to execute 'elementsFromPoint' on 'Document': The provided double value is non-finite.\n  (Session info: chrome=88.0.4324.104)",
+      "statusDetails" : "selenium.common.exceptions.JavascriptException: Message: javascript error: arguments[0].scrollIntoView is not a function\n  (Session info: chrome=88.0.4324.104)",
       "time" : {
-        "start" : 1612421300815,
-        "stop" : 1612421605347,
-        "duration" : 304532
+        "start" : 1614565811925,
+        "stop" : 1614565897941,
+        "duration" : 86016
       }
     } ]
   }

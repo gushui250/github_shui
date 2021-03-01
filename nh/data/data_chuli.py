@@ -8,7 +8,6 @@ import csv
 import os
 import pymysql, xlwt, xlrd
 
-
 class Data_(object):
     def __init__(self):
         self.zzz = []
@@ -18,7 +17,7 @@ class Data_(object):
         b = {}
         c = []
         dir = os.path.dirname(os.path.abspath('.'))
-        with open(f'{dir}\data\case01.csv', 'r', newline='') as f:
+        with open(fr'{dir}\data\case01.csv', 'r', newline='') as f:
             res = csv.reader(f)
             r = next(res)
             r = next(res)
@@ -28,6 +27,7 @@ class Data_(object):
         b['tital'] = a  # 添加
         c.append(b)
 
+
     def data02(self, i):
 
         z = []
@@ -35,7 +35,7 @@ class Data_(object):
         zz = []
         dir = os.path.dirname(os.path.abspath('.'))
 
-        with xlrd.open_workbook(f'{dir}\data\测试1.xlsx') as t:
+        with xlrd.open_workbook(fr'{dir}\data\测试1.xlsx') as t:
             y = len(t.sheets())
             if i < y:
                 sheet = t.sheets()[i]  # 下标位置选择
@@ -55,7 +55,7 @@ class Data_(object):
         '''
         if x == ('quanbu',) or x == 'quanbu':
             dir = os.path.dirname(os.path.abspath('.'))
-            with xlrd.open_workbook(f'{dir}\data\测试1.xlsx') as t:
+            with xlrd.open_workbook(fr'{dir}\data\测试1.xlsx') as t:
                 y = [i for i in range(len(t.sheets()))]
                 self.data03(y)
         else:
@@ -93,7 +93,7 @@ def txt_excel():
                 sheet.write(i - a, iii, ii[iii])
         elif f1[i].startswith('\n'):
             x += 1
-            sheet = t.add_sheet(f'phthon{x}', cell_overwrite_ok=True)
+            sheet = t.add_sheet(fr'phthon{x}', cell_overwrite_ok=True)
             a = i + 1
         else:
             sheet.write(i - a, 0, f1[i])
@@ -102,12 +102,12 @@ def txt_excel():
     f.close()
 
 
-# if __name__ == "__main__":
-#     # try:
-#     #     txt_excel()
-#     # except:
-#     #     pass
-#     print(Data_().data03('quanbu'))
+if __name__ == "__main__":
+    # try:
+    #     txt_excel()
+    # except:
+    #     pass
+    print(Data_().data03(3))
 
 
 

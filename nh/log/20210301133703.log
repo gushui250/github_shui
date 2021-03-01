@@ -1,0 +1,9 @@
+2021-03-01 13:37:08,656 logger.py[line:50] INFO Open url: https://www.nhtest.com/
+2021-03-01 13:37:10,770 logger.py[line:50] INFO Maximize the current window.
+2021-03-01 13:37:10,771 logger.py[line:50] INFO Set implicitly wait 10 seconds.
+2021-03-01 13:37:11,069 logger.py[line:50] INFO Had take screenshot and save to folder : \screenshots
+2021-03-01 13:37:11,078 logger.py[line:50] INFO Had find the element //*[@id="details-button"] successful 
+2021-03-01 13:37:11,104 logger.py[line:50] INFO The element xpath=>//*[@id="details-button"] was clicked.
+2021-03-01 13:37:14,387 logger.py[line:50] INFO Had take screenshot and save to folder : \screenshots
+2021-03-01 13:37:14,395 logger.py[line:50] INFO Had find the element //*[@id="proceed-link"] successful 
+2021-03-01 13:37:17,899 logger.py[line:50] INFO The element xpath=>//*[@id="proceed-link"] was clicked.
