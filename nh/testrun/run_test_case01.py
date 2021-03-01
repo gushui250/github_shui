@@ -12,7 +12,7 @@ import pytest
 dir = os.path.dirname(os.path.abspath('.'))
 allure_path = dir + r'\tools\allure-2.13.8\bin\allure.bat'
 
-pytest.main(['-s', 'test_case01.py', '--alluredir', '../temp'])
+pytest.main(['-s', rf'{dir}\testcase\test_case01.py', '--alluredir', '../temp'])
 # print(allure_path)
 os.system(fr'{allure_path} generate ../temp -o ../report --clean')
 
